@@ -1,0 +1,14 @@
+name: Environment variables
+on: push
+jobs:  # ジョブの定義
+  run:
+    runs-on: ubuntu-latest  # ランナー(ubuntuで実行）
+    env:
+      BRANCH: main
+      COMMENT: Hello World
+    steps:   # ステップの定義
+      - run: echo "BRANCH = ${BRANCH}"
+      - run: echo "COMMENT = ${COMMENT}"
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{env.BRANCH}}
