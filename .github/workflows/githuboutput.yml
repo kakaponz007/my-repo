@@ -5,7 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: source
-        run: echo "result=hello world" >> "${GITHUB_OUTPUT}"
+        run: |
+          echo "result=hello world" >> "${GITHUB_OUTPUT}"
+          echo "result2=hello japan" >> "${GITHUB_OUTPUT}"
+          echo "result3=hello UK" >> "${GITHUB_OUTPUT}"
+          echo "result4=hello US" >> "${GITHUB_OUTPUT}"
       - env:
           RESULT: ${{ steps.source.outputs.result }}
-        run: echo "${RESULT}"
+          RESULT2: ${{ steps.source.outputs.result2 }}
+          RESULT3: ${{ steps.source.outputs.result3 }}
+          RESULT4: ${{ steps.source.outputs.result4 }}
+        run: echo "${RESULT} / ${RESULT2} / ${RESULT3} / ${RESULT4}"
