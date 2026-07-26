@@ -1,0 +1,9 @@
+name: Concurrency
+on: push
+concurrency: ${{ github.workflow }} #ワークフロー名で同時制御
+jobs:
+  sleep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - run: sleep 120 # 120秒sleep
