@@ -6,10 +6,12 @@ jobs:
     steps:
       - id: source
         run: |
-          echo "result=hello world" >> "${GITHUB_OUTPUT}"
-          echo "result2=hello japan" >> "${GITHUB_OUTPUT}"
-          echo "result3=hello UK" >> "${GITHUB_OUTPUT}"
-          echo "result4=hello US" >> "${GITHUB_OUTPUT}"
+          {
+            echo "result=hello world"
+            echo "result2=hello japan"
+            echo "result3=hello UK"
+            echo "result4=hello US"
+          } >> "${GITHUB_OUTPUT}"
       - env:
           RESULT: ${{ steps.source.outputs.result }}
           RESULT2: ${{ steps.source.outputs.result2 }}
