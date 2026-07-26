@@ -3,7 +3,9 @@ on: push
 jobs:  # ジョブの定義
   print:
     runs-on: ubuntu-latest  # ランナー(ubuntuで実行）
+    env:
+      HEAD_REF: ${{github.head_ref}}
     steps:   # ステップの定義
       - run: echo "github.actor = ${{github.actor}}"  # githubコンテキストの参照
-      - run: echo "github.head_ref = ${{github.head_ref}}"  # githubコンテキストの参照
+      - run: echo "github.head_ref = ${HEAD_REF}"  # githubコンテキストの参照
       - run: echo "github.event_name = ${{github.event_name}}"  # githubコンテキストの参照
